@@ -2,6 +2,7 @@ package com.ii.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ii.entities.InventoryItem;
 import com.ii.repository.InventoryRepository;
 
 @Service
@@ -14,4 +15,7 @@ public class InventoryService {
 		this.repo = repo;
 	}
 	
+	public InventoryItem AddItem(InventoryItem invItem) {
+		return this.repo.save(invItem);
+	}
 }
