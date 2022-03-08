@@ -22,4 +22,8 @@ public class InventoryController {
 		return new ResponseEntity<InventoryItem>(this.service.AddItem(invItem), HttpStatus.ACCEPTED);
 	}
 	
+	@GetMapping("/FindItem/{itemId}")
+	public ResponseEntity<InventoryItem> GetItemById(@PathVariable Long itemId) {
+		return new ResponseEntity<InventoryItem>(this.service.GetItemById(itemId), HttpStatus.FOUND);
+	}
 }

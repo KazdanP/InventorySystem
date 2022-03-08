@@ -3,6 +3,7 @@ package com.ii.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ii.entities.InventoryItem;
+import com.ii.exceptions.ItemNotFoundException;
 import com.ii.repository.InventoryRepository;
 
 @Service
@@ -17,5 +18,9 @@ public class InventoryService {
 	
 	public InventoryItem AddItem(InventoryItem invItem) {
 		return this.repo.save(invItem);
+	}
+	
+	public InventoryItem GetItemById(Long itemId) {
+		return this.repo.findById(itemId).orElseThrow(() -> new ItemNotFoundException("Can't find that Item"));
 	}
 }
