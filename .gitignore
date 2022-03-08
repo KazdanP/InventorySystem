@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 BuilderAttempt.txt
+DefaultEntity.txt
 
 ### STS ###
 .apt_generated
