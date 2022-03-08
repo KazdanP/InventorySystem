@@ -1,5 +1,6 @@
 package com.ii.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ii.entities.InventoryItem;
@@ -22,5 +23,9 @@ public class InventoryService {
 	
 	public InventoryItem GetItemById(Long itemId) {
 		return this.repo.findById(itemId).orElseThrow(() -> new ItemNotFoundException("Can't find that Item"));
+	}
+	
+	public List<InventoryItem> GetAllItems() {
+		return this.repo.findAll();	
 	}
 }
