@@ -20,7 +20,7 @@ public class InventoryController {
 	
 	@PostMapping("/AddItem")
 	public ResponseEntity<InventoryItem> AddItem(@RequestBody InventoryItem invItem) {
-		return new ResponseEntity<InventoryItem>(this.service.AddItem(invItem), HttpStatus.ACCEPTED);
+		return new ResponseEntity<InventoryItem>(this.service.AddItem(invItem), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/FindItem/{itemId}")
