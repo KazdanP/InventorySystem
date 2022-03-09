@@ -22,6 +22,16 @@ public class InventoryItem {
 	
 	public InventoryItem() {}
 	
+	public InventoryItem(Long itemId, String itemName, String itemDesc, String itemType, int invSlots, Boolean upgradable) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.itemDesc = itemDesc;
+		this.itemType = itemType;
+		this.invSlots = invSlots;
+		this.upgradable = upgradable;
+	}
+	
 	public InventoryItem(String itemName, String itemDesc, String itemType, int invSlots, Boolean upgradable) {
 		super();
 		this.itemName = itemName;
