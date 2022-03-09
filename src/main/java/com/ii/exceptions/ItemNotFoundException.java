@@ -3,7 +3,7 @@ package com.ii.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "No person exists with that ID")
+@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "No item exists with that ID")
 public class ItemNotFoundException extends RuntimeException {
 
 	/**
