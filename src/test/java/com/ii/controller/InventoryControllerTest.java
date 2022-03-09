@@ -38,4 +38,14 @@ public class InventoryControllerTest {
 
 		this.mvc.perform(request).andExpect(responseStatus).andExpect(responseContent);
 	}
+	
+	@Test
+	void FindByIdTest() {
+		
+	}
+	
+	@Test
+	void FindAllItemsTest() {
+		
+	}
 }
