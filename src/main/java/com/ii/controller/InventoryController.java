@@ -28,7 +28,7 @@ public class InventoryController {
 		return new ResponseEntity<InventoryItem>(this.service.GetItemById(itemId), HttpStatus.FOUND);
 	}
 	
-	@GetMapping("ShowAllItems")
+	@GetMapping("/ShowAllItems")
 	public ResponseEntity<List<InventoryItem>> ShowAllItems() {
 		return new ResponseEntity<List<InventoryItem>>(this.service.ShowAllItems(), HttpStatus.FOUND);
 	}
