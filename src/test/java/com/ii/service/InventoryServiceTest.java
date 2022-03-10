@@ -58,4 +58,16 @@ public class InventoryServiceTest {
 		
 		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
+	
+	@Test
+	void DeleteByIdTest() {
+		Long id = 1L;
+		
+		Mockito.when(this.repo.existsById(id)).thenReturn(false);
+		
+		assertThat(this.service.DropItemById(id)).isTrue();
+		
+		Mockito.verify(this.repo, Mockito.times(1)).deleteById(Mockito.any());
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(Mockito.any());
+	}
 }
