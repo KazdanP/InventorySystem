@@ -40,7 +40,7 @@ public class InventoryController {
 		if(hasDeleted) {
 			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.ACCEPTED);
 		} else {
-				return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
+			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
 		}
 	}
 	
