@@ -1,6 +1,9 @@
 package com.ii.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +33,29 @@ public class InventoryServiceTest {
 		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(InventoryItem.class));
 	}
 	
+	@Test
+	void GetItemByIdTest() {
+		Long id = 1L;
+		InventoryItem itemFound = new InventoryItem(1L, "Legendary Sword", "A sword", "Weapon", 2, true);
+		
+		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(itemFound));
+
+		assertThat(this.service.GetItemById(id)).isEqualTo(itemFound);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+	}
+	
+	@Test
+	void ShowAllItemsTest() {
+		List<InventoryItem> addedItems = new ArrayList<>();
+		addedItems.add(new InventoryItem(1L, "Legendary Sword", "A sword", "Weapon", 2, true));
+		addedItems.add(new InventoryItem(2L, "Legendary Bow", "A bow", "Weapon", 1, true));
+		addedItems.add(new InventoryItem(3L, "Wooden Sword", "A sword", "Weapon", 1, false));
+		
+		Mockito.when(this.repo.findAll()).thenReturn(addedItems);
+		
+		assertThat(this.service.ShowAllItems()).isEqualTo(addedItems);
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
+	}
 }
