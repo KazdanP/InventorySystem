@@ -54,16 +54,4 @@ public class InventoryController {
 			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
 		}
 	}
-	
-//	Currently not working as intended
-	@DeleteMapping("/DropItem/{itemName}")
-	public ResponseEntity<Boolean> DropItemByName(@PathVariable String itemName) {
-		boolean hasDeleted = this.service.DropByName(itemName);
-		
-		if(hasDeleted) {
-			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.ACCEPTED);
-		} else {
-			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
-		}
-	}
 }

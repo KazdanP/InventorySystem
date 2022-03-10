@@ -38,9 +38,4 @@ public class InventoryService {
 		this.repo.deleteAll();
 		return (this.repo.count() == 0);
 	}
-	
-	public boolean DropByName(String name) {
-		this.repo.DeleteItemByName(name);
-		return !this.repo.ItemExistsByName(name);
-	}
 }
