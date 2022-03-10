@@ -28,4 +28,14 @@ public class InventoryService {
 	public List<InventoryItem> ShowAllItems() {
 		return this.repo.findAll();
 	}
+
+	public boolean DropItemById(Long itemId) {
+		this.repo.deleteById(itemId);
+		return !this.repo.existsById(itemId);
+	}
+	
+	public boolean DropAllItems() {
+		this.repo.deleteAll();
+		return (this.repo.count() == 0);
+	}
 }

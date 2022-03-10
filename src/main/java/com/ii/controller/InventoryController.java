@@ -32,4 +32,26 @@ public class InventoryController {
 	public ResponseEntity<List<InventoryItem>> ShowAllItems() {
 		return new ResponseEntity<List<InventoryItem>>(this.service.ShowAllItems(), HttpStatus.FOUND);
 	}
+	
+	@DeleteMapping("/DropItem/{itemId}")
+	public ResponseEntity<Boolean> DropItemById(@PathVariable Long itemId) {
+		boolean hasDeleted = this.service.DropItemById(itemId);
+		
+		if(hasDeleted) {
+			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.ACCEPTED);
+		} else {
+				return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
+		}
+	}
+	
+	@DeleteMapping("DropAllItems")
+	public ResponseEntity<Boolean> DropAllItems() {
+		boolean hasDeleted = this.service.DropAllItems();
+		
+		if(hasDeleted) {
+			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.ACCEPTED);
+		} else {
+				return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
+		}
+	}
 }
