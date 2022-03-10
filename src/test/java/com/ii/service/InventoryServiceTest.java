@@ -42,7 +42,7 @@ public class InventoryServiceTest {
 
 		assertThat(this.service.GetItemById(id)).isEqualTo(itemFound);
 
-		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyLong());
 	}
 	
 	@Test
@@ -67,7 +67,15 @@ public class InventoryServiceTest {
 		
 		assertThat(this.service.DropItemById(id)).isTrue();
 		
-		Mockito.verify(this.repo, Mockito.times(1)).deleteById(Mockito.any());
-		Mockito.verify(this.repo, Mockito.times(1)).existsById(Mockito.any());
+		Mockito.verify(this.repo, Mockito.times(1)).deleteById(Mockito.anyLong());
+	}
+	
+	@Test
+	void DeleteAllTest() {
+		Mockito.when((this.repo.count())).thenReturn(0L);
+		
+		assertThat(this.service.DropAllItems()).isTrue();
+		
+		Mockito.verify(this.repo, Mockito.times(1)).deleteAll();
 	}
 }

@@ -73,4 +73,9 @@ public class InventoryControllerTest {
 
 		this.mvc.perform(req).andExpectAll(responseStatus, responseContent);
 	}
+	
+	@Test
+	void DeleteByIdTest() {
+		
+	}
 }
