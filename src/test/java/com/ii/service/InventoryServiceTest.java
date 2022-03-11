@@ -71,15 +71,6 @@ public class InventoryServiceTest {
 	}
 	
 	@Test
-	void DeleteAllTest() {
-		Mockito.when((this.repo.count())).thenReturn(0L);
-		
-		assertThat(this.service.DropAllItems()).isTrue();
-		
-		Mockito.verify(this.repo, Mockito.times(1)).deleteAll();
-	}
-	
-	@Test
 	void UpdateByIdTest() {
 		Long id = 1L;
 		
