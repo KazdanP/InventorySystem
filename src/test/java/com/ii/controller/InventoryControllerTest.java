@@ -79,4 +79,10 @@ public class InventoryControllerTest {
 		this.mvc.perform(delete("/DropItem/1"))
 		.andExpect(status().isAccepted());
 	}
+	
+	@Test
+	void DeleteAllTest() throws Exception {
+		this.mvc.perform(delete("/DropAllItems"))
+		.andExpect(status().isAccepted());
+	}
 }
