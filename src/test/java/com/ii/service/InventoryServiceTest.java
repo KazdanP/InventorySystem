@@ -70,4 +70,13 @@ public class InventoryServiceTest {
 		Mockito.verify(this.repo, Mockito.times(1)).deleteById(Mockito.any());
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(Mockito.any());
 	}
+	
+	@Test
+	void DeleteAllTest() {
+		Mockito.doNothing().when(this.repo).deleteAll();
+		
+		assertThat(this.service.DropAllItems()).isEqualTo(true);
+		
+		Mockito.verify(this.repo, Mockito.times(1)).deleteAll();
+	}
 }
