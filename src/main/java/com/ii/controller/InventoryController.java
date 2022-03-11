@@ -54,4 +54,9 @@ public class InventoryController {
 			return new ResponseEntity<Boolean>(hasDeleted, HttpStatus.FORBIDDEN);
 		}
 	}
+	
+	@PutMapping("/UpdateItem/{itemId}")
+	public ResponseEntity<InventoryItem> UpdateItem(@PathVariable Long itemId, @RequestBody InventoryItem invItem) {
+		return new ResponseEntity<InventoryItem>(this.service.UpdateItem(itemId, invItem), HttpStatus.ACCEPTED);
+	}
 }

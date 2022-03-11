@@ -38,4 +38,16 @@ public class InventoryService {
 		this.repo.deleteAll();
 		return (this.repo.count() == 0);
 	}
+	
+	public InventoryItem UpdateItem(Long itemId, InventoryItem newItem) {
+		InventoryItem oldItem = this.GetItemById(itemId);
+		
+		oldItem.setItemName(newItem.getItemName());
+		oldItem.setItemDesc(newItem.getItemDesc());
+		oldItem.setItemType(newItem.getItemType());
+		oldItem.setInvSlots(newItem.getInvSlots());
+		oldItem.setUpgradable(newItem.getUpgradable());
+		
+		return this.repo.save(oldItem);
+	}
 }
