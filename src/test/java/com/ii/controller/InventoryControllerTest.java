@@ -45,7 +45,7 @@ public class InventoryControllerTest {
 	}
 	
 	@Test
-	void FindByIdTest() throws Exception{
+	void FindByIdTest() throws Exception {
 		InventoryItem addedItem = new InventoryItem(1L, "Legendary Sword", "A sword", "Weapon", 2, true);
 		String addedItemJSON = this.mapper.writeValueAsString(addedItem);
 		
@@ -58,7 +58,7 @@ public class InventoryControllerTest {
 	}
 	
 	@Test
-	void FindAllItemsTest() throws Exception{
+	void FindAllItemsTest() throws Exception {
 		List<InventoryItem> addedItems = new ArrayList<>();
 		addedItems.add(new InventoryItem(1L, "Legendary Sword", "A sword", "Weapon", 2, true));
 		addedItems.add(new InventoryItem(2L, "Legendary Bow", "A bow", "Weapon", 1, true));
@@ -74,8 +74,8 @@ public class InventoryControllerTest {
 		this.mvc.perform(req).andExpectAll(responseStatus, responseContent);
 	}
 	
-	@Test
-	void DeleteByIdTest() {
-		
+	void DeleteByIdTest() throws Exception {
+		this.mvc.perform(delete("/DropItem/1"))
+		.andExpect(status().isAccepted());
 	}
 }
