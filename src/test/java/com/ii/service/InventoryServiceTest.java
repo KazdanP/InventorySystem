@@ -72,15 +72,6 @@ public class InventoryServiceTest {
 	
 	@Test
 	void DeleteAllTest() {
-		Mockito.when((this.repo.count())).thenReturn(0L);
-		
-		assertThat(this.service.DropAllItems()).isTrue();
-		
-		Mockito.verify(this.repo, Mockito.times(1)).deleteAll();
-	}
-	
-	@Test
-	void DeleteAllTest() {
 		Mockito.doNothing().when(this.repo).deleteAll();
 		
 		assertThat(this.service.DropAllItems()).isEqualTo(true);
