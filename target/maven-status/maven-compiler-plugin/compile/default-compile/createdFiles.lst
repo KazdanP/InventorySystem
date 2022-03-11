@@ -1,0 +1,6 @@
+com\ii\controller\InventoryController.class
+com\ii\InventorySystemApplication.class
+com\ii\repository\InventoryRepository.class
+com\ii\service\InventoryService.class
+com\ii\exceptions\ItemNotFoundException.class
+com\ii\entities\InventoryItem.class
