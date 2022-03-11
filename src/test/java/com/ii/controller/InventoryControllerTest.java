@@ -84,4 +84,17 @@ public class InventoryControllerTest {
 		this.mvc.perform(delete("/DropAllItems"))
 		.andExpect(status().isAccepted());
 	}
+	
+	@Test
+	void UpdateItemTest() throws Exception {
+		InventoryItem updatedItem = new InventoryItem(1L, "Legendary Sword", "A sword", "Weapon", 2, true);
+		String updatedItemJSON = this.mapper.writeValueAsString(updatedItem);
+		
+		RequestBuilder req = put("/UpdateItem/1").contentType(MediaType.APPLICATION_JSON).content(updatedItemJSON);
+		
+		ResultMatcher responseStatus = status().isAccepted();
+		ResultMatcher responseContent = content().json(updatedItemJSON);
+		
+		this.mvc.perform(req).andExpect(responseStatus).andExpect(responseContent);
+	}
 }
