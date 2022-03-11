@@ -78,4 +78,21 @@ public class InventoryServiceTest {
 		
 		Mockito.verify(this.repo, Mockito.times(1)).deleteAll();
 	}
+	
+	@Test
+	void UpdateByIdTest() {
+		Long id = 1L;
+		
+		InventoryItem savedItem = new InventoryItem();
+		InventoryItem beforeUpdate = new InventoryItem();
+		InventoryItem updatedItem = new InventoryItem();
+		
+		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(savedItem));
+		Mockito.when(this.repo.save(updatedItem)).thenReturn(updatedItem);
+		
+		assertThat(this.service.UpdateItem(id, beforeUpdate)).isEqualTo(updatedItem);
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findById(Mockito.anyLong());
+		Mockito.verify(this.repo, Mockito.times(1)).save(Mockito.any(InventoryItem.class));
+	}
 }
